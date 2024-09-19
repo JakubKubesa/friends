@@ -1,0 +1,16 @@
+<div id="<%= dom_id friend %>" class="card mx-auto my-4" style="width: 24rem;">
+  <div class="card-header text-center bg-primary text-white">
+    <h5 class="card-title mb-0"><%= friend.first_name %> <%= friend.last_name %></h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <strong>Email:</strong> <%= friend.email %><br>
+      <strong>Phone:</strong> <%= friend.phone %><br>
+      <strong>Twitter:</strong> <%= friend.twitter %>
+    </p>
+  </div>
+  <div class="card-footer text-center">
+    <%= link_to 'Edit', edit_friend_path(friend), class: 'btn btn-warning btn-sm' %>
+    <%= link_to 'Delete', friend, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+  </div>
+</div>

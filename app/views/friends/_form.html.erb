@@ -1,0 +1,51 @@
+<%= form_with(model: friend, local: true, class: 'needs-validation') do |form| %>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <% if friend.errors.any? %>
+          <div class="alert alert-danger">
+            <h4 class="alert-heading"><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h4>
+            <ul>
+              <% friend.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="mb-3">
+          <%= form.label :first_name, class: 'form-label' %>
+          <%= form.text_field :first_name, class: 'form-control', placeholder: 'Enter first name', required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :last_name, class: 'form-label' %>
+          <%= form.text_field :last_name, class: 'form-control', placeholder: 'Enter last name', required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :email, class: 'form-label' %>
+          <%= form.email_field :email, class: 'form-control', placeholder: 'Enter email', required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :phone, class: 'form-label' %>
+          <%= form.telephone_field :phone, class: 'form-control', placeholder: 'Enter phone number', required: true %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :twitter, class: 'form-label' %>
+          <%= form.text_field :twitter, class: 'form-control', placeholder: 'Enter Twitter handle' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.text_field :user_id, id: :friend_user_id, class: 'form-control', value: current_user.id, type: :hidden %>
+        </div>
+
+        <div class="d-grid gap-2">
+          <%= form.submit 'Save Friend', class: 'btn btn-primary btn-lg' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
